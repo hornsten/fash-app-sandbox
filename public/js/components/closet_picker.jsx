@@ -54,6 +54,7 @@ const { images, clothesbins } = this.state;
 
         <div style={{ overflow: 'hidden', clear: 'both' }}>
           {clothesbins.map(({ accepts, lastDroppedItem }, index) =>
+          
             <Clothesbin
               accepts={accepts}
               lastDroppedItem={lastDroppedItem}

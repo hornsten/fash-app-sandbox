@@ -3,8 +3,8 @@ import { DropTarget } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 
 const style = {
-  height: '15rem',
-  width: '15rem',
+  // height: '15rem',
+  // width: '15rem',
   marginRight: '1.5rem',
   marginBottom: '1.5rem',
   color: 'grey',
@@ -48,14 +48,22 @@ export default class Clothesbin extends Component {
       backgroundColor = 'darkkhaki';
     }
 
+    let height = '15rem';
+    let width = '15rem';
+    let transform = 'matrix(0,0,0,0)';
+    if (this.props.accepts=='top') {
+      height = '30rem';
+      width = '30rem';
+      transform = 'matrix(0.98582, -0.16781, 0.16781, 0.98582, 0, 0)';
+    }
+
     return connectDropTarget(
-      <div style={{ ...style, backgroundColor }}>
+
+      <div style={{ ...style, backgroundColor,height,width,transform }}>
         {isActive ?
           'Release to drop' :
           `${accepts.join(', ')}`
-          
         }
-
         {lastDroppedItem &&
           <img style={{height:'100%'}} src={lastDroppedItem.src}></img>
         }

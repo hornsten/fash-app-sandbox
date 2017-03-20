@@ -83,11 +83,11 @@ z-index: 6;
 
 .poly-top {
 
-left: 10.227px;
+/*left: 10.227px;
 top: 10.102px;
 height: 500px;
 width: 250px;
-z-index: 4;
+z-index: 4;*/
 transform: matrix(0.99978, -0.02083, 0.02083, 0.99978, 0, 0);
 
 }
@@ -126,6 +126,7 @@ transform: matrix(0.95654, 0.29162, -0.29162, 0.95654, 0, 0);
     height: 150px;
     width: 150px;
     z-index: 5;
+    transform: matrix(0.90439, 0.42666, -0.42666, 0.90439, 0, 0);
 }
 
 .poly-flair {
