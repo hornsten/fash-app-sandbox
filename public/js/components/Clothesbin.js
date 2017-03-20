@@ -2,13 +2,12 @@ import React, { PropTypes, Component } from 'react';
 import { DropTarget } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 
-
 const style = {
-  height: '12rem',
-  width: '12rem',
+  height: '15rem',
+  width: '15rem',
   marginRight: '1.5rem',
   marginBottom: '1.5rem',
-  color: 'white',
+  color: 'grey',
   padding: '1rem',
   textAlign: 'center',
   fontSize: '1rem',
@@ -38,10 +37,11 @@ export default class Clothesbin extends Component {
   };
 
   render() {
+   
     const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
     const isActive = isOver && canDrop;
 
-    let backgroundColor = '#222';
+    let backgroundColor = '#eee';
     if (isActive) {
       backgroundColor = 'darkgreen';
     } else if (canDrop) {
@@ -52,11 +52,12 @@ export default class Clothesbin extends Component {
       <div style={{ ...style, backgroundColor }}>
         {isActive ?
           'Release to drop' :
-          `This bin accepts: ${accepts.join(', ')}`
+          `${accepts.join(', ')}`
+          
         }
 
         {lastDroppedItem &&
-          <p>Last dropped: {JSON.stringify(lastDroppedItem)}</p>
+          <img style={{height:'100%'}} src={lastDroppedItem.src}></img>
         }
       </div>,
     );

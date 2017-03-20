@@ -27,8 +27,8 @@ const initialState = {
                         type: 'bag'},
           '203456789': {src: '/img/watch_203456789.jpg',
                         type: 'accessory'},
-          '683904dea': {src: '/img/prop_683904dea.jpg',
-                        type: 'prop'}
+          '683904dea': {src: '/img/flair_683904dea.jpg',
+                        type: 'flair'}
         },
         outfitIndex: {
           sideNavText: 'Outfits'

@@ -3,11 +3,16 @@ import { DragSource } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 
 const style = {
-  border: '1px dashed gray',
-  backgroundColor: 'white',
-  padding: '0.5rem 1rem',
-  marginRight: '1.5rem',
+  // border: '1px dashed gray',
+  backgroundColor: 'eee',
+ height: '15rem',
+  width: '15rem',
+ padding: '1rem',
+   marginRight: '1.5rem',
   marginBottom: '1.5rem',
+   textAlign: 'center',
+   fontSize: '1rem',
+  lineHeight: 'normal',
   cursor: 'move',
   float: 'left',
 };
@@ -21,7 +26,6 @@ const imageSource = {
   },
 };
  
-
 @DragSource(props => props.type, imageSource, (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
   isDragging: monitor.isDragging(),
@@ -44,8 +48,8 @@ export default class Image extends Component {
     return connectDragSource(
         <div style={{ ...style, opacity }}>
          {isDropped ?
-          <s>{src}</s> :
-          src
+          <img style={{height:'100%'}} src={src}></img> :
+          <img style={{height:'80%', width: '80%'}} src={src}></img>
         }
         </div>,
     );

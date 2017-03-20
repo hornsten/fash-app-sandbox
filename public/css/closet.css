@@ -30,7 +30,7 @@ img {
 }
 .closet-tabs-container {
     height: 200px;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
 .closet-tabs-container ul {
@@ -82,9 +82,10 @@ z-index: 6;
 }
 
 .poly-top {
+
 left: 10.227px;
 top: 10.102px;
-height: 300px;
+height: 500px;
 width: 250px;
 z-index: 4;
 transform: matrix(0.99978, -0.02083, 0.02083, 0.99978, 0, 0);
@@ -127,7 +128,7 @@ transform: matrix(0.95654, 0.29162, -0.29162, 0.95654, 0, 0);
     z-index: 5;
 }
 
-.poly-prop {
+.poly-flair {
     left: 300px;
     top: 430px;
     height: 200px;

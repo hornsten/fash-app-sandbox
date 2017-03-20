@@ -14,17 +14,19 @@ class ClosetPicker extends React.Component {
       clothesbins: [
         { accepts: [ItemTypes.TOP], lastDroppedItem: null },
         { accepts: [ItemTypes.BOTTOM], lastDroppedItem: null },
-        { accepts: [ItemTypes.DRESS, ItemTypes.TOP, NativeTypes.URL], lastDroppedItem: null },
-        { accepts: [ItemTypes.BAG, NativeTypes.FILE], lastDroppedItem: null },
-        { accepts: [ItemTypes.ACCESSORY, ItemTypes.FLAIR, NativeTypes.URL], lastDroppedItem: null },
+        { accepts: [ItemTypes.DRESS, ItemTypes.TOP], lastDroppedItem: null },
+        { accepts: [ItemTypes.BAG], lastDroppedItem: null },
+        { accepts: [ItemTypes.ACCESSORY, ItemTypes.FLAIR], lastDroppedItem: null },
+        { accepts: [ItemTypes.SHOES], lastDroppedItem: null },
       ],
       images: [
-        { id: 'Top', type: ItemTypes.TOP,src:'toppy' },
-        { id: 'Bottom', type: ItemTypes.BOTTOM, src:'bottomy' },
-        { id: 'Dress', type: ItemTypes.DRESS, src: 'dressy' },
-        { id: 'Bag', type: ItemTypes.BAG, src: 'baggy' },
-        { id: 'Earrings', type: ItemTypes.ACCESSORY, src: 'earringsy' },
-        { id: 'Coffee Mug', type: ItemTypes.FLAIR, src: 'muggy' },
+        { id: '201393774', type: ItemTypes.BOTTOM,src:'/img/bottom_201393774.jpg' },
+        { id: '199987425', type: ItemTypes.TOP, src:'/img/top_199987425.jpg' },
+        { id: '201591292', type: ItemTypes.DRESS, src: '/img/dress_201591292.jpg' },
+        { id: '567ec3a81fe', type: ItemTypes.BAG, src: '/img/bag_567ec3a81fe.jpg' },
+        { id: '203456789', type: ItemTypes.ACCESSORY, src: '/img/watch_203456789.jpg' },
+        { id: '683904dea', type: ItemTypes.FLAIR, src: '/img/flair_683904dea.jpg' },
+        { id: '202012027', type: ItemTypes.SHOES, src: '/img/shoes_202012027.jpg' },
       ],
       droppedImageIds: [],
     };
@@ -33,32 +35,6 @@ class ClosetPicker extends React.Component {
 isDropped(imageId) {
     return this.state.droppedImageIds.indexOf(imageId) > -1;
   }
-// dragStart (event) {
-
-//     event.dataTransfer.setData('text', event.target.id);
-    
-//   }
-
-// preventDefault(event) {
-//     event.preventDefault();
-// }
-
-// drop(event) {
-
-//     event.preventDefault();
-
-//     var data = event.dataTransfer.getData("text");
-//     var dropItem = document.getElementById(data);
-//     dropItem.className='dropped';
-//     event.target.appendChild(dropItem);
-//     event.target.classList.remove('bg');
-   
-// }
-
-// handleClick(e) {
-// e.preventDefault();
-
-// }
 
    render() {
        
@@ -67,20 +43,15 @@ isDropped(imageId) {
       
     //   let clothesImages = Object.keys(closetItems).map((imgKey,index)=> {
 
-    //       return <img id={imgKey} draggable="true" onDragStart={this.dragStart} key={imgKey} src={closetItems[imgKey].src}/>
+    //       return <img id={imgKey} key={imgKey} src={closetItems[imgKey].src}/>
     //   })
+
 const { images, clothesbins } = this.state; 
       return (
          <section className="container-fluid closet-container">
         
             <div className="col-md-6 closet-block"> 
-                {/*<div id='top-target' className="poly-top target bg" onDragOver={this.preventDefault} onDrop={this.drop}>        </div>
-                <div id='bag-target' className="poly-bag target bg" onDragOver={this.preventDefault} onDrop={this.drop}>Bag</div>
-                <div id='bottom-target' className="poly-bottom target bg" onDragOver={this.preventDefault} onDrop={this.drop}></div>
-                <div id='shoes-target' className="poly-shoes target bg" onDragOver={this.preventDefault} onDrop={this.drop}>Shoes</div>
-                <div id='accessory-target' className="poly-accessory target bg" onDragOver={this.preventDefault} onDrop={this.drop}>Accessory</div>
-                <div id='prop-target' className="poly-prop target bg" onDragOver={this.preventDefault} onDrop={this.drop}>Prop</div>          */}
-           <div>
+
         <div style={{ overflow: 'hidden', clear: 'both' }}>
           {clothesbins.map(({ accepts, lastDroppedItem }, index) =>
             <Clothesbin
@@ -90,22 +61,8 @@ const { images, clothesbins } = this.state;
               key={index}
             />,
           )}
-        </div>
-
-        <div style={{ overflow: 'hidden', clear: 'both' }}>
-          {images.map(({ id,src, type }, index) =>
-            <Image
-              id={id}
-              src={src}
-              type={type}
-              isDropped={this.isDropped(src)}
-              key={index}
-            />,
-          )}
-        </div>
+        </div>       
       </div>
-          
-            </div>
              <div className="col-md-6 closet-block">
                 <div className="clothes-items">
                     <div className="closet-tabs-container">
@@ -116,13 +73,22 @@ const { images, clothesbins } = this.state;
                         </ul>
                         <div className="gallery">
                         {/*{clothesImages}*/}
-                        </div>
+                         <div style={{ overflow: 'hidden', clear: 'both' }}>
+                        {images.map(({ id,src, type }, index) =>
+                            <Image
+                            id={id}
+                            src={src}
+                            type={type}
+                            isDropped={this.isDropped(src)}
+                            key={index}
+                            />,
+                        )}
                     </div>
-                </div>
-
-             </div>
-         </section>
-      
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
       )
    }
    handleDrop(index, item) {
