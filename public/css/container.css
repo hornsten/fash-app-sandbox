@@ -1,0 +1,167 @@
+.tomato {
+    color: #FF4500;
+}
+
+#MainBlock {
+    position: fixed;
+    top: 28px;
+    background: #fff;
+    right: 0;
+    -webkit-transition: all 0.15s ease-out 0s;
+    -moz-transition: all 0.15s ease-out 0s;
+    transition: all 0.15s ease-out 0s;
+    bottom: 0;
+}
+
+.section-containers {
+    height: 100%;
+}
+
+#sideNav {
+    position: fixed;
+    left: 0;
+    width: 200px;
+    top: 28px;
+    bottom: 0;
+    font-size: 13px;
+}
+
+#sideNav.side-open {
+    background: rgba(31, 45, 61, 0.9);
+    color: inherit;
+}
+
+#sideNav.side-close {
+    background: #1F2D3D;
+    color: #1F2D3D;
+}
+
+#sideNav.side-close ul {
+    display: none;
+}
+
+.add-file {
+    margin-top: 2px;
+    font-size: 1.9em;
+}
+
+.add-ff {
+    float: right;
+}
+
+#sideNavTop {
+    width: 200px;
+    background-color: #1F2D3D;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+#sideNav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.open-close-butt {
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 2px;
+    height: 26px;
+    vertical-align: top;
+}
+
+.open-close-butt:hover {
+    color: #00d8ff;
+}
+
+div.horz-open .hrz {
+    display: block;
+}
+
+.vrtz {
+    position: absolute;
+    left: -6px;
+}
+
+div.horz-close .hrz {
+    display: none;
+}
+
+div.horz-close .vrtz {
+    display: block;
+}
+
+div.horz-open .vrtz {
+    display: none;
+}
+
+.closed i {
+    color: rgb(31, 45, 61);
+}
+
+.closed span {
+    color: rgb(31, 45, 61);
+}
+
+.closed:hover i {
+    color: rgb(63, 125, 181);
+}
+
+.closed:hover span {
+    color: rgb(63, 125, 181);
+}
+
+#sideNav i {
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+#sideNav li {
+    -webkit-transition: all 0.15s ease-out 0s;
+    -moz-transition: all 0.15s ease-out 0s;
+    transition: all 0.15s ease-out 0s;
+    padding: 0px 3px;
+}
+
+.side-nav-collapsed {
+    left: 15px;
+}
+
+.side-nav-expand {
+    left: 200px;
+}
+
+#infoButt {
+    padding: 3px;
+    -webkit-transition: all 0.15s ease-out 0s;
+    -moz-transition: all 0.15s ease-out 0s;
+    transition: all 0.15s ease-out 0s;
+    border-right: 1px solid white;
+}
+
+#infoButt:hover {
+    color: #00d8ff;
+}
+
+#saveButt {
+    padding: 3px;
+    border-right: 1px solid white;
+}
+
+#topNavBar {
+    height: 28px;
+    background: #222;
+    border-bottom: 1px solid white;
+    width: 100%;
+}
+
+#topNavBar span {
+    padding: 3px 8px;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#topNavBar i {
+    font-size: 1.5em;
+}

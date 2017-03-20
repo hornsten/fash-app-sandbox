@@ -1,0 +1,146 @@
+#canvas-wrap { position:relative; width:300px; height:600px }
+#canvas-wrap canvas { position:absolute; top:0; left:0; z-index:0 }
+
+.clothes-drop {
+
+height: 100%;
+}
+.clothes-items {
+border: 1px solid silver;
+height: 100%;
+}
+
+img {
+    height: 100px;
+}
+.bg {
+   background-color: #eee;
+    opacity: 0.7;
+    height: 100%;
+    width: 100%;
+    border: 0.5px dashed grey;
+ 
+}
+
+.closet-container {
+    height: 100%;
+}
+.closet-block {
+    height: 100%;
+}
+.closet-tabs-container {
+    height: 200px;
+    overflow: hidden;
+}
+
+.closet-tabs-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.closet-tabs-container ul li {
+    display: inline-block;
+    padding: 4px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+    margin: 0 4px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+     -webkit-transition: all 0.15s ease-out 0s;
+    -moz-transition: all 0.15s ease-out 0s;
+    transition: all 0.15s ease-out 0s;
+
+}
+
+.closet-tabs-container ul li:hover {
+     color: #00d8ff;
+}
+
+img {
+     cursor: move; 
+     overflow: hidden;
+
+}
+
+.dropped {
+  height: 200px;
+  width: 100%;
+height: 100%;
+z-index: 6;
+}
+
+.target {
+
+    left: 0px;
+    top: 0px;
+    display:block;
+    position: absolute;
+   
+}
+
+.poly-top {
+left: 10.227px;
+top: 10.102px;
+height: 300px;
+width: 250px;
+z-index: 4;
+transform: matrix(0.99978, -0.02083, 0.02083, 0.99978, 0, 0);
+
+}
+
+.poly-bottom {
+left: 250px;
+ top: 20.385px;
+z-index: 5;
+transform: matrix(0.98582, -0.16781, 0.16781, 0.98582, 0, 0);
+width:250px;
+height: 450px;
+
+ }
+
+.poly-accessory {
+left: 24.963px;
+top: 336.085px;
+z-index: 3;
+transform: matrix(1, 0, 0, 1, 0, 0);
+width: 100px;
+height: 100px;
+}
+
+.poly-bag {
+left: 100px;
+top: 290px;
+ height: 150px;
+ width:200px;
+z-index: 6;
+transform: matrix(0.95654, 0.29162, -0.29162, 0.95654, 0, 0);
+}
+
+.poly-shoes {
+    left: 130px;
+    top: 480px;
+    height: 150px;
+    width: 150px;
+    z-index: 5;
+}
+
+.poly-prop {
+    left: 300px;
+    top: 430px;
+    height: 200px;
+    width: 150px;
+    z-index: 4;
+    
+}
+
+.full {
+     background: transparent;
+    left: 0px;
+    top: 0px;
+    display:block;
+    position: absolute;
+   
+}
