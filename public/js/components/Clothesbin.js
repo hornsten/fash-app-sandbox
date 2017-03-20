@@ -16,13 +16,13 @@ const style = {
   float: 'left',
 };
 
-const imageTarget = {
-  drop() {
-    return { name: 'Clothesbin' };
+const clothesbinTarget = {
+  drop(props, monitor) {
+    props.onDrop(monitor.getItem());
   },
 };
 
-@DropTarget(ItemTypes.IMAGE, imageTarget, (connect, monitor) => ({
+@DropTarget(props => props.accepts, clothesbinTarget, (connect, monitor) => ({
   connectDropTarget: connect.dropTarget(),
   isOver: monitor.isOver(),
   canDrop: monitor.canDrop(),
@@ -32,11 +32,14 @@ export default class Clothesbin extends Component {
     connectDropTarget: PropTypes.func.isRequired,
     isOver: PropTypes.bool.isRequired,
     canDrop: PropTypes.bool.isRequired,
+    accepts: PropTypes.arrayOf(PropTypes.string).isRequired,
+    lastDroppedItem: PropTypes.object,
+    onDrop: PropTypes.func.isRequired,
   };
 
   render() {
-    const { canDrop, isOver, connectDropTarget } = this.props;
-    const isActive = canDrop && isOver;
+    const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
+    const isActive = isOver && canDrop;
 
     let backgroundColor = '#222';
     if (isActive) {
@@ -49,7 +52,11 @@ export default class Clothesbin extends Component {
       <div style={{ ...style, backgroundColor }}>
         {isActive ?
           'Release to drop' :
-          'Drag an image here'
+          `This bin accepts: ${accepts.join(', ')}`
+        }
+
+        {lastDroppedItem &&
+          <p>Last dropped: {JSON.stringify(lastDroppedItem)}</p>
         }
       </div>,
     );

@@ -1,14 +1,38 @@
 import React, { Component } from "react";
-import { DragSource, DragDropContextProvider } from 'react-dnd';
-import HTML5Backend from 'react-dnd-html5-backend';
+import update from 'react/lib/update';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import Clothesbin from './Clothesbin';
 import Image from './Image';
+import ItemTypes from './ItemTypes';
 
+@DragDropContext(HTML5Backend)
 class ClosetPicker extends React.Component {
    constructor(props) {
       super(props);
-   }
+    this.state = {
+      clothesbins: [
+        { accepts: [ItemTypes.TOP], lastDroppedItem: null },
+        { accepts: [ItemTypes.BOTTOM], lastDroppedItem: null },
+        { accepts: [ItemTypes.DRESS, ItemTypes.TOP, NativeTypes.URL], lastDroppedItem: null },
+        { accepts: [ItemTypes.BAG, NativeTypes.FILE], lastDroppedItem: null },
+        { accepts: [ItemTypes.ACCESSORY, ItemTypes.FLAIR, NativeTypes.URL], lastDroppedItem: null },
+      ],
+      images: [
+        { id: 'Top', type: ItemTypes.TOP,src:'toppy' },
+        { id: 'Bottom', type: ItemTypes.BOTTOM, src:'bottomy' },
+        { id: 'Dress', type: ItemTypes.DRESS, src: 'dressy' },
+        { id: 'Bag', type: ItemTypes.BAG, src: 'baggy' },
+        { id: 'Earrings', type: ItemTypes.ACCESSORY, src: 'earringsy' },
+        { id: 'Coffee Mug', type: ItemTypes.FLAIR, src: 'muggy' },
+      ],
+      droppedImageIds: [],
+    };
+  }
 
+isDropped(imageId) {
+    return this.state.droppedImageIds.indexOf(imageId) > -1;
+  }
 // dragStart (event) {
 
 //     event.dataTransfer.setData('text', event.target.id);
@@ -41,11 +65,11 @@ class ClosetPicker extends React.Component {
     let {dashboard, dispatch} = this.props;
       let {sideNavExpanded, onDisplay, closetItems} = dashboard;
       
-      let clothesImages = Object.keys(closetItems).map((imgKey,index)=> {
+    //   let clothesImages = Object.keys(closetItems).map((imgKey,index)=> {
 
-          return <img id={imgKey} draggable="true" onDragStart={this.dragStart} key={imgKey} src={closetItems[imgKey].src}/>
-      })
-
+    //       return <img id={imgKey} draggable="true" onDragStart={this.dragStart} key={imgKey} src={closetItems[imgKey].src}/>
+    //   })
+const { images, clothesbins } = this.state; 
       return (
          <section className="container-fluid closet-container">
         
@@ -56,18 +80,31 @@ class ClosetPicker extends React.Component {
                 <div id='shoes-target' className="poly-shoes target bg" onDragOver={this.preventDefault} onDrop={this.drop}>Shoes</div>
                 <div id='accessory-target' className="poly-accessory target bg" onDragOver={this.preventDefault} onDrop={this.drop}>Accessory</div>
                 <div id='prop-target' className="poly-prop target bg" onDragOver={this.preventDefault} onDrop={this.drop}>Prop</div>          */}
-            <DragDropContextProvider backend={HTML5Backend}>
-          <div>
-            <div style={{ overflow: 'hidden', clear: 'both' }}>
-              <Clothesbin />
-            </div>
-            <div style={{ overflow: 'hidden', clear: 'both' }}>
-              <Image id="1j2ie" src="photos.sdfj.png" />
-              <Image id="123jfls" src="photos.sdfj.png" />
-              <Image id="Pabe23d" src="photos.sdfj.png"/>
-            </div>
-          </div>
-        </DragDropContextProvider>
+           <div>
+        <div style={{ overflow: 'hidden', clear: 'both' }}>
+          {clothesbins.map(({ accepts, lastDroppedItem }, index) =>
+            <Clothesbin
+              accepts={accepts}
+              lastDroppedItem={lastDroppedItem}
+              onDrop={item => this.handleDrop(index, item)}
+              key={index}
+            />,
+          )}
+        </div>
+
+        <div style={{ overflow: 'hidden', clear: 'both' }}>
+          {images.map(({ id,src, type }, index) =>
+            <Image
+              id={id}
+              src={src}
+              type={type}
+              isDropped={this.isDropped(src)}
+              key={index}
+            />,
+          )}
+        </div>
+      </div>
+          
             </div>
              <div className="col-md-6 closet-block">
                 <div className="clothes-items">
@@ -88,7 +125,22 @@ class ClosetPicker extends React.Component {
       
       )
    }
-}
+   handleDrop(index, item) {
+    const { id } = item;
 
+    this.setState(update(this.state, {
+      clothesbins: {
+        [index]: {
+          lastDroppedItem: {
+            $set: item,
+          },
+        },
+      },
+      droppedImageIds: id ? {
+        $push: [id],
+      } : {},
+    }));
+  }
+}
 
 export default ClosetPicker;
