@@ -43,6 +43,7 @@ isDropped(imageId) {
  handleClick(e) {
 e.preventDefault();
  html2canvas(document.getElementsByClassName('clothes-items'), {
+      background: '#fff',
       onrendered: function (canvas) {
                     var img = canvas.toDataURL("image/png")
                     window.open(img);
@@ -50,6 +51,7 @@ e.preventDefault();
     });
 
 };
+
 
    render() {
        

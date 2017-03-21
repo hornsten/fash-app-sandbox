@@ -38,28 +38,31 @@ export default class Clothesbin extends Component {
 
   let className = '';
     if (this.props.accepts=='top') {
-      className='target poly-top';
+      className='target poly-top text-center';
   } else if (this.props.accepts=='bottom,dress') {
-      className='target poly-bottom';
+      className='target poly-bottom text-center';
   } else if (this.props.accepts=='accessory,flair') {
-      className='target poly-flair'
+      className='target poly-flair text-center'
   } else if (this.props.accepts=='shoes') {
-      className='target poly-shoes';
+      className='target poly-shoes text-center';
   } else if (this.props.accepts=='bag') {
-     className='target poly-bag';
+     className='target poly-bag text-center';
   }
     
     return connectDropTarget(
 
       <div style={{ backgroundColor, opacity }} className={className}>
+        <div className={lastDroppedItem ? "hide-elm" : ''}>
         {isActive ?
           'Release to drop' :
           `${accepts.join(', ')}`
         }
+        </div>
         {lastDroppedItem &&
           <img style={{height:'100%',width:'auto'}} src={lastDroppedItem.src}></img>
         }
       </div>,
     );
+
   }
 }
