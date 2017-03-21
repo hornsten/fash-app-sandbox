@@ -5,6 +5,7 @@ import HTML5Backend, { NativeTypes } from 'react-dnd-html5-backend';
 import Clothesbin from './Clothesbin';
 import Image from './Image';
 import ItemTypes from './ItemTypes';
+var html2canvas = require('html2canvas');
 
 @DragDropContext(HTML5Backend)
 class ClosetPicker extends React.Component {
@@ -38,6 +39,15 @@ isDropped(imageId) {
     return this.state.droppedImageIds.indexOf(imageId) > -1;
   }
 
+componentDidUpdate() {
+    html2canvas(document.getElementById('gallery'), {
+      onrendered: function (canvas) {
+                    var img = canvas.toDataURL("image/png")
+                    window.open(img);
+  
+  }
+});
+};
    render() {
        
     let {dashboard, dispatch} = this.props;
@@ -52,7 +62,7 @@ const { images, clothesbins } = this.state;
       return (
          <section className="container-fluid closet-container">
         
-            <div className="col-md-7 closet-block rel"> 
+            <div id='clothesSet' className="col-md-7 closet-block rel"> 
 
         <div style={{ overflow: 'hidden', clear: 'both' }}>
           {clothesbins.map(({ accepts, lastDroppedItem, className }, index) =>
@@ -74,7 +84,8 @@ const { images, clothesbins } = this.state;
                             <li>Shirts</li>
                             <li>Dresses</li>
                         </ul>
-                        <div className="gallery">
+                        <div id="gallery">
+                        
                         {/*{clothesImages}*/}
                          <div style={{ overflow: 'hidden', clear: 'both' }}>
                         {images.map(({ id,src, type }, index) =>

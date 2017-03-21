@@ -1,6 +1,5 @@
 import React from "react";
 import ClosetPicker from "./closet_picker";
-
 class MainBlock extends React.Component {
    constructor(props) {
       super(props);
