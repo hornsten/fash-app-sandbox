@@ -10,9 +10,6 @@ border: 1px solid silver;
 height: 100%;
 }
 
-img {
-    height: 100px;
-}
 .bg {
    background-color: #eee;
     opacity: 0.7;
@@ -65,75 +62,67 @@ img {
 
 }
 
-.dropped {
-  height: 200px;
-  width: 100%;
-height: 100%;
-z-index: 6;
-}
-
 .target {
 
-    left: 0px;
-    top: 0px;
+    left: 0;
+    top: 0;
     display:block;
     position: absolute;
-   
 }
 
 .poly-top {
 
-/*left: 10.227px;
-top: 10.102px;
-height: 500px;
-width: 250px;
-z-index: 4;*/
+left: 1rem;
+top: 1rem;
+height: 30rem;
+width: 29rem;
+z-index: 5;
 transform: matrix(0.99978, -0.02083, 0.02083, 0.99978, 0, 0);
 
 }
 
 .poly-bottom {
-left: 250px;
- top: 20.385px;
-z-index: 5;
+left: 25rem;
+ top: 2rem;
+z-index: 4;
 transform: matrix(0.98582, -0.16781, 0.16781, 0.98582, 0, 0);
-width:250px;
-height: 450px;
+width:23rem;
+height: 45rem;
 
  }
 
 .poly-accessory {
-left: 24.963px;
-top: 336.085px;
-z-index: 3;
+left: 3rem;
+top: 34rem;
+z-index: 5;
 transform: matrix(1, 0, 0, 1, 0, 0);
-width: 100px;
-height: 100px;
+width: 10rem;
+height: 10rem;
 }
 
 .poly-bag {
-left: 100px;
-top: 290px;
- height: 150px;
- width:200px;
+left: 10rem;
+top: 29rem;
+ height: 15rem;
+ width:15rem;
 z-index: 6;
 transform: matrix(0.95654, 0.29162, -0.29162, 0.95654, 0, 0);
 }
 
 .poly-shoes {
-    left: 130px;
-    top: 480px;
-    height: 150px;
-    width: 150px;
-    z-index: 5;
+    left: 13rem;
+    top: 48rem;
+    height: 15rem;
+    width: 15rem;
+    z-index: 3;
     transform: matrix(0.90439, 0.42666, -0.42666, 0.90439, 0, 0);
 }
 
 .poly-flair {
-    left: 300px;
-    top: 430px;
-    height: 200px;
-    width: 150px;
+    left: 24rem;
+    top: 45rem;
+    height: 11rem;
+    width: 11rem;
     z-index: 4;
     
 }
@@ -145,4 +134,8 @@ transform: matrix(0.95654, 0.29162, -0.29162, 0.95654, 0, 0);
     display:block;
     position: absolute;
    
+}
+
+.rel {
+    position: relative;
 }

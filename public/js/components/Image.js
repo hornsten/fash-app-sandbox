@@ -47,7 +47,7 @@ export default class Image extends Component {
         <div style={{ ...style, opacity }}>
          {isDropped ?
           <img style={{height:'100%'}} src={src}></img> :
-          <img style={{height:'80%', width: '80%'}} src={src}></img>
+          <img style={{height:'80%', width: 'auto'}} src={src}></img>
         }
         </div>,
     );

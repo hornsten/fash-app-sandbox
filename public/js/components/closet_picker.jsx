@@ -13,22 +13,22 @@ class ClosetPicker extends React.Component {
     this.state = {
       clothesbins: [
          { accepts: [ItemTypes.TOP], lastDroppedItem: null },
-         { accepts: [ItemTypes.BAG], lastDroppedItem: null },
+         { accepts: [ItemTypes.BAG], lastDroppedItem: null},
         { accepts: [ItemTypes.ACCESSORY, ItemTypes.FLAIR], lastDroppedItem: null },
-           { accepts: [ItemTypes.SHOES], lastDroppedItem: null },
+           { accepts: [ItemTypes.SHOES], lastDroppedItem: null},
          { accepts: [ItemTypes.BOTTOM,ItemTypes.DRESS], lastDroppedItem: null }
      
         
       ],
       images: [
-        { id: '201393774', type: ItemTypes.BOTTOM,src:'/img/bottom_201393774.jpg' },
+        { id: '201393774', type: ItemTypes.BOTTOM,src:'/img/bottom_201393774.png' },
         { id: '201234566', type: ItemTypes.BOTTOM,src:'/img/bottom_201234566.png' },
-        { id: '199987425', type: ItemTypes.TOP, src:'/img/top_199987425.jpg' },
-        { id: '201591292', type: ItemTypes.DRESS, src: '/img/dress_201591292.jpg' },
-        { id: '567ec3a81fe', type: ItemTypes.BAG, src: '/img/bag_567ec3a81fe.jpg' },
-        { id: '203456789', type: ItemTypes.ACCESSORY, src: '/img/watch_203456789.jpg' },
-        { id: '683904dea', type: ItemTypes.FLAIR, src: '/img/flair_683904dea.jpg' },
-        { id: '202012027', type: ItemTypes.SHOES, src: '/img/shoes_202012027.jpg' },
+        { id: '199987425', type: ItemTypes.TOP, src:'/img/top_199987425.png' },
+        { id: '201591292', type: ItemTypes.DRESS, src: '/img/dress_201591292.png' },
+        { id: '567ec3a81fe', type: ItemTypes.BAG, src: '/img/bag_567ec3a81fe.png' },
+        { id: '203456789', type: ItemTypes.ACCESSORY, src: '/img/watch_203456789.png' },
+        { id: '683904dea', type: ItemTypes.FLAIR, src: '/img/flair_683904dea.png' },
+        { id: '202012027', type: ItemTypes.SHOES, src: '/img/shoes_202012027.png' },
       ],
       droppedImageIds: [],
     };
@@ -52,10 +52,10 @@ const { images, clothesbins } = this.state;
       return (
          <section className="container-fluid closet-container">
         
-            <div className="col-md-7 closet-block"> 
+            <div className="col-md-7 closet-block rel"> 
 
         <div style={{ overflow: 'hidden', clear: 'both' }}>
-          {clothesbins.map(({ accepts, lastDroppedItem }, index) =>
+          {clothesbins.map(({ accepts, lastDroppedItem, className }, index) =>
           
             <Clothesbin
               accepts={accepts}
