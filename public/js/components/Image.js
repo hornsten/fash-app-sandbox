@@ -5,11 +5,9 @@ import ItemTypes from './ItemTypes';
 const style = {
   // border: '1px dashed gray',
   backgroundColor: 'eee',
- height: '15rem',
-  width: '15rem',
+ height: '10rem',
+  width: '10rem',
  padding: '1rem',
-   marginRight: '1.5rem',
-  marginBottom: '1.5rem',
    textAlign: 'center',
    fontSize: '1rem',
   lineHeight: 'normal',

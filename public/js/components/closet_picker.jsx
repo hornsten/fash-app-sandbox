@@ -12,15 +12,17 @@ class ClosetPicker extends React.Component {
       super(props);
     this.state = {
       clothesbins: [
-        { accepts: [ItemTypes.TOP], lastDroppedItem: null },
-        { accepts: [ItemTypes.BOTTOM], lastDroppedItem: null },
-        { accepts: [ItemTypes.DRESS, ItemTypes.TOP], lastDroppedItem: null },
-        { accepts: [ItemTypes.BAG], lastDroppedItem: null },
+         { accepts: [ItemTypes.TOP], lastDroppedItem: null },
+         { accepts: [ItemTypes.BAG], lastDroppedItem: null },
         { accepts: [ItemTypes.ACCESSORY, ItemTypes.FLAIR], lastDroppedItem: null },
-        { accepts: [ItemTypes.SHOES], lastDroppedItem: null },
+           { accepts: [ItemTypes.SHOES], lastDroppedItem: null },
+         { accepts: [ItemTypes.BOTTOM,ItemTypes.DRESS], lastDroppedItem: null }
+     
+        
       ],
       images: [
         { id: '201393774', type: ItemTypes.BOTTOM,src:'/img/bottom_201393774.jpg' },
+        { id: '201234566', type: ItemTypes.BOTTOM,src:'/img/bottom_201234566.png' },
         { id: '199987425', type: ItemTypes.TOP, src:'/img/top_199987425.jpg' },
         { id: '201591292', type: ItemTypes.DRESS, src: '/img/dress_201591292.jpg' },
         { id: '567ec3a81fe', type: ItemTypes.BAG, src: '/img/bag_567ec3a81fe.jpg' },
@@ -50,7 +52,7 @@ const { images, clothesbins } = this.state;
       return (
          <section className="container-fluid closet-container">
         
-            <div className="col-md-6 closet-block"> 
+            <div className="col-md-7 closet-block"> 
 
         <div style={{ overflow: 'hidden', clear: 'both' }}>
           {clothesbins.map(({ accepts, lastDroppedItem }, index) =>
@@ -64,7 +66,7 @@ const { images, clothesbins } = this.state;
           )}
         </div>       
       </div>
-             <div className="col-md-6 closet-block">
+             <div className="col-md-5 closet-block">
                 <div className="clothes-items">
                     <div className="closet-tabs-container">
                         <ul>

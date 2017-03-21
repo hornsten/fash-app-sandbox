@@ -3,16 +3,15 @@ import { DropTarget } from 'react-dnd';
 import ItemTypes from './ItemTypes';
 
 const style = {
-  // height: '15rem',
-  // width: '15rem',
-  marginRight: '1.5rem',
-  marginBottom: '1.5rem',
+  marginRight: '0.1rem',
+  marginBottom: '0.1rem',
   color: 'grey',
-  padding: '1rem',
+  padding: '0',
   textAlign: 'center',
   fontSize: '1rem',
   lineHeight: 'normal',
   float: 'left',
+  overflow: 'hidden',
 };
 
 const clothesbinTarget = {
@@ -40,12 +39,15 @@ export default class Clothesbin extends Component {
    
     const { accepts, isOver, canDrop, connectDropTarget, lastDroppedItem } = this.props;
     const isActive = isOver && canDrop;
-
+    
     let backgroundColor = '#eee';
+    let opacity = '.5';
     if (isActive) {
       backgroundColor = 'darkgreen';
+      opacity = '1';
     } else if (canDrop) {
       backgroundColor = 'darkkhaki';
+      opacity = '1';
     }
 
     let height = '15rem';
@@ -53,8 +55,16 @@ export default class Clothesbin extends Component {
     let transform = 'matrix(0,0,0,0)';
     if (this.props.accepts=='top') {
       height = '30rem';
-      width = '30rem';
+      width = '25rem';
       transform = 'matrix(0.98582, -0.16781, 0.16781, 0.98582, 0, 0)';
+    } else if (this.props.accepts=='bottom,dress') {
+      height = '40rem';
+      width = '20rem';
+      transform = 'matrix(0.99978, -0.02083, 0.02083, 0.99978, 0, 0)';
+    } else if (this.props.accepts=='accessory,flair') {
+      height = '10rem';
+      width = '10rem';
+      transform = 'matrix(0.90439, 0.42666, -0.42666, 0.90439, 0, 0)';
     }
 
     return connectDropTarget(
