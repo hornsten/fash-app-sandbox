@@ -18,7 +18,7 @@ class ClosetPicker extends React.Component {
         { accepts: [ItemTypes.ACCESSORY, ItemTypes.FLAIR], lastDroppedItem: null },
            { accepts: [ItemTypes.SHOES], lastDroppedItem: null},
          { accepts: [ItemTypes.BOTTOM,ItemTypes.DRESS], lastDroppedItem: null }
-     
+        
         
       ],
       images: [
@@ -39,15 +39,18 @@ isDropped(imageId) {
     return this.state.droppedImageIds.indexOf(imageId) > -1;
   }
 
-componentDidUpdate() {
-    html2canvas(document.getElementById('gallery'), {
+
+ handleClick(e) {
+e.preventDefault();
+ html2canvas(document.getElementsByClassName('clothes-items'), {
       onrendered: function (canvas) {
                     var img = canvas.toDataURL("image/png")
                     window.open(img);
-  
-  }
-});
+        }
+    });
+
 };
+
    render() {
        
     let {dashboard, dispatch} = this.props;
@@ -64,7 +67,7 @@ const { images, clothesbins } = this.state;
         
             <div id='clothesSet' className="col-md-7 closet-block rel"> 
 
-        <div style={{ overflow: 'hidden', clear: 'both' }}>
+        <div className="clothes-items" style={{ overflow: 'hidden', clear: 'both' }}>
           {clothesbins.map(({ accepts, lastDroppedItem, className }, index) =>
           
             <Clothesbin
@@ -97,6 +100,7 @@ const { images, clothesbins } = this.state;
                             key={index}
                             />,
                         )}
+                        <button onClick={this.handleClick} className="btn btn-primary btn-lg">Save</button>
                     </div>
                  </div>
             </div>
